@@ -19,9 +19,9 @@ const ProductDetailCard = ({Data}) => (
     }
   >
     
-    <h2> ชื่อสินค้า {Data.name}</h2>
+    <h2>  {Data.name}</h2>
     <h3> ราคา {Data.price}  บาท </h3>
-    <InputNumber  style={{marginTop: "10px"}} />
+    <InputNumber  style={{marginTop: "10px"}}  defaultValue={0}  min={1} max={10}/>
     <br/>
     <Button type="primary" style={{marginTop: "15px"}}>เพิ่มลงตระกร้า</Button>
   </Card>

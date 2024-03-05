@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import Register from './Register';
+
 
 const Container = styled.div`
   display: flex;
@@ -40,6 +42,10 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
+const RegisterButton = styled(Button)`
+  background-color: #8e44ad; /* เปลี่ยนสีปุ่ม Register ตามต้องการ */
+`;
+
 const LoginPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -49,6 +55,12 @@ const LoginPage = () => {
     console.log('Username:', username);
     console.log('Password:', password);
     // เพิ่มโค้ดตรวจสอบผู้ใช้งานที่นี่
+  };
+
+  const handleRegister = () => {
+    
+    
+    console.log('Redirect to Register Page');
   };
 
   return (
@@ -68,6 +80,7 @@ const LoginPage = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <Button type="submit">Login</Button>
+        <RegisterButton type="button" onClick={handleRegister}>Register</RegisterButton>
       </LoginForm>
     </Container>
   );

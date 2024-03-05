@@ -1,23 +1,45 @@
-import React from 'react';
-import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
-import { Breadcrumb, Layout, Menu, theme , Carousel , Row, Col, Card } from 'antd';
-import Image1 from "./1.jpg"
-import Image2 from "./2.jpg"
-import Image3 from "./3.jpg"
-import ProductDetailCard from './ProductCard';
+import React from "react";
+import {
+  LaptopOutlined,
+  NotificationOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
+import {
+  Breadcrumb,
+  Layout,
+  Menu,
+  theme,
+  Carousel,
+  Row,
+  Col,
+  Card,
+} from "antd";
+import Image1 from "./1.jpg";
+import Image2 from "./2.jpg";
+import Image3 from "./3.jpg";
+import ProductDetailCard from "./ProductCard";
 
 const { Header, Content, Sider } = Layout;
 const { Meta } = Card;
 
-const items1 = ['ประวัติการสั่งซื้อ', 'ร้านขายสุขภัณฑ์', 'ดูสินค้าทั้งหมด', 'หน้าแรก', 'ตะกร้าสินค้า'].map((label, index) => ({
+const items1 = [
+  "ร้านขายสุขภัณฑ์",
+  "หน้าแรก",
+  "ดูสินค้าทั้งหมด",
+  "ประวัติการสั่งซื้อ",
+  "ตะกร้าสินค้า",
+].map((label, index) => ({
   key: String(index + 1),
   label,
 }));
 
 const items2 = [
-  { key: 'sub1', icon: <UserOutlined />, label: 'subnav 1', children: new Array(4).fill(null).map((_, j) => ({ key: j + 1, label: `option${j + 1}` })) },
-  { key: 'sub2', icon: <LaptopOutlined />, label: 'subnav 2', children: new Array(4).fill(null).map((_, j) => ({ key: j + 5, label: `option${j + 5}` })) },
-  { key: 'sub3', icon: <NotificationOutlined />, label: 'subnav 3', children: new Array(4).fill(null).map((_, j) => ({ key: j + 9, label: `option${j + 9}` })) },
+  { key: "sub1", icon: <UserOutlined />, label: "ประเภทสินค้า" },
+  { key: "sub2", icon: <LaptopOutlined />, label: "สุขภัณฑ์อัตโนมัติ" },
+  { key: "sub3", icon: <NotificationOutlined />, label: "สุขภัณฑ์ชักโครก" },
+  { key: "sub4", icon: <NotificationOutlined />, label: "สุขภัณฑ์เคลื่อนที่" },
+  { key: "sub5", icon: <NotificationOutlined />, label: "สุขภัณฑ์เซ็นเซอร์" },
+  { key: "sub6", icon: <NotificationOutlined />, label: "สุขภัณฑ์ราดน้ำ" },
 ];
 
 const FullLayout = () => {
@@ -25,37 +47,226 @@ const FullLayout = () => {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
   const productData = [
-    { id: 1, name: 'Product 1', description: 'Description of Product 1', image: 'product1.jpg' },
-    { id: 2, name: 'Product 2', description: 'Description of Product 2', image: 'product2.jpg' },
-    { id: 3, name: 'Product 3', description: 'Description of Product 3', image: 'product3.jpg' },
-    { id: 4, name: 'Product 4', description: 'Description of Product 4', image: 'product4.jpg' }
+    {
+      id: 1,
+      name: "สุขภัณฑ์อัตโนมัติ COTTO C10121H 6L สีขาว",
+      price: "29,990",
+      image:
+        "https://cdn.homepro.co.th/ART_IMAGE/11/691/1169172/160x160/19072021_1169172$Imagec1.jpg",
+    },
+    {
+      id: 2,
+      name: "สุขภัณฑ์นั่งราบ MOYA HP-031 สีขาว",
+      price: "1,190",
+      image:
+        "https://cdn.homepro.co.th/ART_IMAGE/10/195/1019540/160x160/24032023_1019540$Imagec1.jpg",
+    },
+    {
+      id: 3,
+      name: "สุขภัณฑ์ 1 ชิ้น COTTO C11002H 3/4.5L สีขาว (EXC)",
+      price: "4,990",
+      image:
+        "https://cdn.homepro.co.th/ART_IMAGE/11/521/1152151/160x160/26052022_1152151$Imagec1.jpg",
+    },
+    {
+      id: 4,
+      name: "สุขภัณฑ์ 2 ชิ้น COTTO TOUCHLESS C135137 4.5 ลิตร สีขาว",
+      price: "12,950",
+      image:
+        "https://cdn.homepro.co.th/ART_IMAGE/11/572/1157269/160x160/20092023_1157269$Imagec1.jpg",
+    },
   ];
 
   const Recommendedproducts = [
-    { id: 1, name: 'Product 1', description: 'Description of Product 1', image: 'product1.jpg' },
-    { id: 2, name: 'Product 2', description: 'Description of Product 2', image: 'product2.jpg' },
-    { id: 3, name: 'Product 3', description: 'Description of Product 3', image: 'product3.jpg' },
-    { id: 4, name: 'Product 4', description: 'Description of Product 4', image: 'product4.jpg' }
+    {
+      id: 1,
+      name: "สุขภัณฑ์อัตโนมัติ TOTO CES9788PRVA สีขาว",
+      price: "139,900",
+      image:
+        "https://cdn.homepro.co.th/ART_IMAGE/12/286/1228635/160x160/17022023_1228635$Imagec1.jpg",
+    },
+    {
+      id: 2,
+      name: "สุขภัณฑ์นั่งราบ NASCO NC-9501-SA สีฟ้า",
+      price: "1,590",
+      image:
+        "https://cdn.homepro.co.th/ART_IMAGE/11/382/1138281/160x160/28032023_1138281$Imagec1.jpg",
+    },
+    {
+      id: 3,
+      name: "สุขภัณฑ์เคลื่อนที่ MOYA BP-1788",
+      price: "4,790",
+      image:
+        "https://cdn.homepro.co.th/ART_IMAGE/10/999/1099986/160x160/19042023_1099986$Imagec1.jpg",
+    },
+    {
+      id: 4,
+      name: "สุขภัณฑ์ 1 ชิ้น AMERICAN STANDARD 2531SCTL-WT-0 4.8L สีขาว",
+      price: "9,590",
+      image:
+        "https://cdn.homepro.co.th/ART_IMAGE/11/660/1166055/160x160/19072021_1166055$Imagec1.jpg",
+    },
   ];
   const ProductDetail = [
-    { id: 1, name: 'ห้องน้ำ 1', price: '100', image: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png' },
-    { id: 2, name: 'ห้องนอน 2', description: '200', image: 'product2.jpg' },
-    { id: 3, name: 'ห้องครัว 3', description: 'Description of Product 3', image: 'product3.jpg' },
-    { id: 4, name: 'ห้องกินข้าว 4', description: 'Description of Product 4', image: 'product4.jpg' },
-    { id: 5, name: 'ห้องน้ำ 1', price: '100', image: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png' },
-    { id: 6, name: 'ห้องนอน 2', description: '200', image: 'product2.jpg' },
-    { id: 7, name: 'ห้องครัว 3', description: 'Description of Product 3', image: 'product3.jpg' },
-    { id: 8, name: 'ห้องกินข้าว 4', description: 'Description of Product 4', image: 'product4.jpg' }
+    {
+      id: 1,
+      name: "สุขภัณฑ์อัตโนมัติ COTTO C10121H 6L สีขาว",
+      price: "29,990",
+      image:
+        "https://cdn.homepro.co.th/ART_IMAGE/11/691/1169172/160x160/19072021_1169172$Imagec1.jpg",
+    },
+    {
+      id: 2,
+      name: "สุขภัณฑ์อัตโนมัติ TOTO CES9788PRVA สีขาว",
+      price: "139,900",
+      image:
+        "https://cdn.homepro.co.th/ART_IMAGE/12/286/1228635/160x160/17022023_1228635$Imagec1.jpg",
+    },
+    {
+      id: 3,
+      name: "สุขภัณฑ์อัตโนมัติ KOHLER K-8340X-2EX-0 5.5L สีขาว",
+      price: "58,900",
+      image:
+        "https://cdn.homepro.co.th/ART_IMAGE/11/584/1158454/160x160/31082021_1158454$Imagec1.jpg",
+    },
+    {
+      id: 4,
+      name: "สุขภัณฑ์อัตโนมัติ TOTO CES85510PVJ 3/4.5 ลิตร สีขาว",
+      price: "146,000",
+      image:
+        "https://cdn.homepro.co.th/ART_IMAGE/12/419/1241986/160x160/31082023_1241986$Imagec1.jpg",
+    },
+    {
+      id: 5,
+      name: "สุขภัณฑ์นั่งราบ MOYA HP-031 สีขาว",
+      price: "1,190",
+      image:
+        "https://cdn.homepro.co.th/ART_IMAGE/10/195/1019540/160x160/24032023_1019540$Imagec1.jpg",
+    },
+    {
+      id: 6,
+      name: "สุขภัณฑ์นั่งราบ KARAT K-17713X-S-WK สีขาว",
+      price: "1,365",
+      image:
+        "https://cdn.homepro.co.th/ART_IMAGE/12/013/1201300/160x160/18052022_1201300$Imagec2.jpg",
+    },
+    {
+      id: 7,
+      name: "สุขภัณฑ์นั่งยองมีฐาน MOYA 101 สีขาว",
+      price: "890",
+      image:
+        "https://cdn.homepro.co.th/ART_IMAGE/10/812/1081236/160x160/10072021_1081236$Imagec1.jpg",
+    },
+    {
+      id: 8,
+      name: "สุขภัณฑ์นั่งราบ NASCO NC-9501-SA สีฟ้า",
+      price: "1,590",
+      image:
+        "https://cdn.homepro.co.th/ART_IMAGE/11/382/1138281/160x160/28032023_1138281$Imagec1.jpg",
+    },
+    {
+      id: 9,
+      name: "สุขภัณฑ์ 1 ชิ้น COTTO C11002H 3/4.5L สีขาว (EXC)",
+      price: "4,990",
+      image:
+        "https://cdn.homepro.co.th/ART_IMAGE/11/521/1152151/160x160/26052022_1152151$Imagec1.jpg",
+    },
+    {
+      id: 10,
+      name: "สุขภัณฑ์ 1 ชิ้น MOYA 329 3/6L สีขาว",
+      price: "3,490",
+      image:
+        "https://cdn.homepro.co.th/ART_IMAGE/10/839/1083954/160x160/19072023_1083954$Imagec1.jpg",
+    },
+    {
+      id: 11,
+      name: "สุขภัณฑ์ 1 ชิ้น MOYA SN-T004 3/4.8L สีขาว (HTD)",
+      price: "3,590",
+      image:
+        "https://cdn.homepro.co.th/ART_IMAGE/10/665/1066554/160x160/12042023_1066554$Imagec1.jpg",
+    },
+    {
+      id: 12,
+      name: "สุขภัณฑ์ 1 ชิ้น MOYA 301 3/6 ลิตร สีขาว",
+      price: "3,490",
+      image:
+        "https://cdn.homepro.co.th/ART_IMAGE/11/994/1199471/160x160/27032023_1199471$Imagec1.jpg",
+    },
+    {
+      id: 13,
+      name: "สุขภัณฑ์เคลื่อนที่ MOYA BP-1309S สีน้ำตาล",
+      price: "1,590",
+      image:
+        "https://cdn.homepro.co.th/ART_IMAGE/10/643/1064361/160x160/03042023_1064361$Imagec3.jpg",
+    },
+    {
+      id: 14,
+      name: "สุขภัณฑ์เคลื่อนที่ MOYA OC13",
+      price: "2,190",
+      image:
+        "https://cdn.homepro.co.th/ART_IMAGE/10/809/1080944/160x160/07092022_1080944$Imagec1.jpg",
+    },
+    {
+      id: 15,
+      name: "สุขภัณฑ์เคลื่อนที่ MOYA BP-1788",
+      price: "4,790",
+      image:
+        "https://cdn.homepro.co.th/ART_IMAGE/10/999/1099986/160x160/19042023_1099986$Imagec1.jpg",
+    },
+    {
+      id: 16,
+      name: "สุขภัณฑ์ 1 ชิ้น COTTO TOUCHLESS C105327 4.5 ลิตร สีขาว",
+      price: "7,390",
+      image:
+        "https://cdn.homepro.co.th/ART_IMAGE/11/572/1157279/160x160/20092023_1157279$Imagec1.jpg",
+    },
+    {
+      id: 17,
+      name: "สุขภัณฑ์ 2 ชิ้น COTTO TOUCHLESS C135137 4.5 ลิตร สีขาว",
+      price: "12,950",
+      image:
+        "https://cdn.homepro.co.th/ART_IMAGE/11/572/1157269/160x160/20092023_1157269$Imagec1.jpg",
+    },
+    {
+      id: 18,
+      name: "สุขภัณฑ์ 1 ชิ้น KARAT K-99192X-TF-WK 3/4.5L สีขาว",
+      price: "7,150",
+      image:
+        "https://cdn.homepro.co.th/ART_IMAGE/11/847/1184768/160x160/18102021_1184768$Imagec1.jpg",
+    },
+    {
+      id: 19,
+      name: "สุขภัณฑ์ 2 ชิ้น COTTO TOUCHLESS C126227 4.5 ลิตร สีขาว",
+      price: "6,990",
+      image:
+        "https://cdn.homepro.co.th/ART_IMAGE/11/571/1157148/160x160/20092023_1157148$Imagec1.jpg",
+    },
+    {
+      id: 20,
+      name: "สุขภัณฑ์ 1 ชิ้น AMERICAN STANDARD 2531SCTL-WT-0 4.8L สีขาว",
+      price: "9,590",
+      image:
+        "https://cdn.homepro.co.th/ART_IMAGE/11/660/1166055/160x160/19072021_1166055$Imagec1.jpg",
+    },
   ];
   return (
     <Layout>
-      <Header style={{ background: '#D2B48C', padding: 0 }}>
-        <div className="logo" style={{ width: 120, height: 31, background: 'rgba(255, 255, 255, 0.2)', margin: '16px 28px 16px 0', float: 'left' }} />
+      <Header style={{ background: "#D2B48C", padding: 0 }}>
+        <div
+          className="logo"
+          style={{
+            width: 120,
+            height: 31,
+            background: "rgba(255, 255, 255, 0.2)",
+            margin: "16px 28px 16px 0",
+            float: "left",
+          }}
+        />
         <Menu
           theme="dark"
           mode="horizontal"
-          defaultSelectedKeys={['1']}
-          style={{ lineHeight: '64px' }}
+          defaultSelectedKeys={["1"]}
+          style={{ lineHeight: "64px" }}
           items={items1}
         />
       </Header>
@@ -63,85 +274,100 @@ const FullLayout = () => {
         <Sider width={200} style={{ background: colorBgContainer }}>
           <Menu
             mode="inline"
-            defaultSelectedKeys={['1']}
-            defaultOpenKeys={['sub1']}
-            style={{ height: '100%', borderRight: 0 }}
+            defaultSelectedKeys={["1"]}
+            defaultOpenKeys={["sub1"]}
+            style={{ height: "100%", borderRight: 0 }}
             items={items2}
           />
         </Sider>
-        <Layout style={{ padding: '0 24px 24px' }}>
-          <Breadcrumb style={{ margin: '16px 0' }}>
-            <Breadcrumb.Item>Home</Breadcrumb.Item>
-            <Breadcrumb.Item>List</Breadcrumb.Item>
-            <Breadcrumb.Item>App</Breadcrumb.Item>
-          </Breadcrumb>
+        <Layout style={{ padding: "0 24px 24px" }}>
           <Content
-  style={{
-    padding: 24,
-    margin: 0,
-    minHeight: 280,
-    background: colorBgContainer,
-    borderRadius: borderRadiusLG,
-  }}
->
-  <Carousel autoplay>
-    <div>
-      <img src={Image1} alt="Image 1" style={{ width: '100%' , height: "300px" }} />
-    </div>
-    <div>
-      <img src={Image2} alt="Image 2" style={{ width: '100%' , height: "300px" }} />
-    </div>
-    <div>
-      <img src={Image3} alt="Image 3" style={{ width: '100%' , height: "300px" }} />
-    </div>
-  </Carousel>
+            style={{
+              padding: 24,
+              margin: 0,
+              minHeight: 280,
+              background: colorBgContainer,
+              borderRadius: borderRadiusLG,
+            }}
+          >
+            <Carousel autoplay>
+              <div>
+                <img
+                  src={Image1}
+                  alt="Image 1"
+                  style={{ width: "100%", height: "300px" }}
+                />
+              </div>
+              <div>
+                <img
+                  src={Image2}
+                  alt="Image 2"
+                  style={{ width: "100%", height: "300px" }}
+                />
+              </div>
+              <div>
+                <img
+                  src={Image3}
+                  alt="Image 3"
+                  style={{ width: "100%", height: "300px" }}
+                />
+              </div>
+            </Carousel>
 
+            <div>
+              <h2 style={{ textAlign: "center", margin: "20px 0" }}>
+                New Product
+              </h2>
+              <Row gutter={[16, 16]}>
+                {productData.map((product) => (
+                  <Col key={product.id} span={6}>
+                    <Card
+                      hoverable
+                      cover={<img alt={product.name} src={product.image} />}
+                    >
+                      <Meta
+                        title={product.name}
+                        description={product.description}
+                      />
+                    </Card>
+                  </Col>
+                ))}
+              </Row>
+            </div>
 
-  
-  <div>
-      <h2 style={{ textAlign: 'center', margin: '20px 0' }}>New Product</h2>
-      <Row gutter={[16, 16]}>
-        {productData.map(product => (
-          <Col key={product.id} span={6}>
-            <Card
-              hoverable
-              cover={<img alt={product.name} src={product.image} />}
-            >
-              <Meta title={product.name} description={product.description} />
-            </Card>
-          </Col>
-        ))}
-      </Row>
-    </div>
+            <div>
+              <h2 style={{ textAlign: "center", margin: "20px 0" }}>
+                Recommendedproducts
+              </h2>
+              <Row gutter={[16, 16]}>
+                {Recommendedproducts.map((product) => (
+                  <Col key={product.id} span={6}>
+                    <Card
+                      hoverable
+                      cover={<img alt={product.name} src={product.image} />}
+                    >
+                      <Meta
+                        title={product.name}
+                        description={product.description}
+                      />
+                    </Card>
+                  </Col>
+                ))}
+              </Row>
+            </div>
+            <hr />
 
-    <div>
-      <h2 style={{ textAlign: 'center', margin: '20px 0' }}>Recommendedproducts</h2>
-      <Row gutter={[16, 16]}>
-        {Recommendedproducts.map(product => (
-          <Col key={product.id} span={6}>
-            <Card
-              hoverable
-              cover={<img alt={product.name} src={product.image} />}
-            >
-              <Meta title={product.name} description={product.description} />
-            </Card>
-          </Col>
-        ))}
-      </Row>
-    </div>
-    <hr />
-
-    <h2 style={{ textAlign: 'Left', margin: '20px 0' }}>สินค้าทั้งหมด</h2>
-    <Row gutter={[16, 16]}>
-    {ProductDetail.map(product => (
-            <Col key={product.id} span={6}>
-    <ProductDetailCard  Data={product} />
-    </Col>
-    ))}
-       </Row>
-</Content>
-
-
+            <h2 style={{ textAlign: "center", margin: "20px 0" }}>
+              สินค้าทั้งหมด
+            </h2>
+            <Row gutter={[16, 16]}>
+              {ProductDetail.map((product) => (
+                <Col key={product.id} span={6}>
+                  <ProductDetailCard Data={product} />
+                </Col>
+              ))}
+            </Row>
+          </Content>
         </Layout>
       </Layout>
     </Layout>
