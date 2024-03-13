@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
-import { Card, InputNumber, Button, Modal } from 'antd';
+import { Card, InputNumber, Button, Modal , message } from 'antd';
 import styled from 'styled-components';
+
 
 const { Meta } = Card;
 
@@ -37,31 +38,37 @@ const ProductDetailCard = ({ Data }) => {
   const [quantity, setQuantity] = useState(1);
 
   const AddBasket = async () => {
+    var setData = {
+      "name": basket.name,
+      "price":  basket.price,
+      "qty":  basket.qty ? basket.qty : 1 ,
+      "productid" : basket.id,
+      "userid": 1
+    }
     try {
       // Make a POST request to the API endpoint
-      const response = await fetch('http://localhost:5000/product', {
+      const response = await fetch('http://localhost:5000/insertbasket', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(basket), // Convert product data to JSON format
+        body: JSON.stringify(setData), // Convert product data to JSON format
       });
   
       // Check if the request was successful (status code 2xx)
       if (response.ok) {
         // Handle successful response (e.g., display success message)
-        console.log('Product added to basket successfully');
+        message.success('Product added to basket successfully');
+        setOpen(false);
       } else {
         // Handle unsuccessful response (e.g., display error message)
-        console.error('Failed to add product to basket:', response.statusText);
+        message.error(`Failed to add product to basket: ${response.statusText}`);
       }
     } catch (error) {
       // Handle errors (e.g., network error)
-      console.error('Error adding product to basket:', error);
+      message.error(`Error adding product to basket: ${error.message}`);
     }
   };
-
-  
   const handleQuantityChange = (value) => {
     setQuantity(value);
   };
@@ -92,7 +99,7 @@ const ProductDetailCard = ({ Data }) => {
       <ProductName>{basket.name}</ProductName>
       <ProductPrice>{basket.price} บาท</ProductPrice>
       <p>Amount : {basket.qty} Qty.</p>
-      <p>Total Price: {basket.qty && basket.price ? basket.qty * parseInt((basket.price).replace(/,/g, ''), 10) + " บาท" : "N/A"}</p>
+      <p>Total Price: {basket.qty && basket.price ? basket.qty * parseInt((basket.price).replace(/,/g, ''), 10) + " บาท" :  1 }</p>
     </Modal>
     </>
   )

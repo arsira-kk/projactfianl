@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { message } from 'antd';
 
 const Container = styled.div`
   display: flex;
@@ -47,17 +48,15 @@ const Register = () => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [address, setAddress] = useState('');
-  const [notification, setNotification] = useState('');
 
   const handleRegister = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-      setNotification('Passwords do not match');
+      message.error('Passwords do not match');
       return;
     }
     try {
-      // Replace the endpoint with your register API endpoint
-      const response = await fetch('/api/register', {
+      const response = await fetch('http://localhost:5000/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -65,14 +64,14 @@ const Register = () => {
         body: JSON.stringify({ username, password, name, phone, address }),
       });
       if (response.ok) {
-        setNotification('Registration successful');
-        // Optionally, redirect the user to login page after successful registration
+        message.success('Registration successful');
+        window.location.assign("/");
       } else {
-        setNotification('Registration failed. Please try again.');
+        message.error('Registration failed. Please try again.');
       }
     } catch (error) {
       console.error('Error during registration:', error);
-      setNotification('An error occurred during registration. Please try again later.');
+      message.error('An error occurred during registration. Please try again later.');
     }
   };
 
@@ -122,7 +121,6 @@ const Register = () => {
           onChange={(e) => setAddress(e.target.value)}
         />
         <Button type="submit">Register</Button>
-        {notification && <div>{notification}</div>}
       </RegisterForm>
     </Container>
   );

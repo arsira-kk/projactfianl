@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Register from './Register';
+import { message } from 'antd';
+
 
 const Container = styled.div`
   display: flex;
@@ -56,12 +57,13 @@ const Notification = styled.div`
 const LoginPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [notification, setNotification] = useState('');
+  const [notification, setNotification] = useState(''); // Define notification state
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('/api/login', {
+      const response = await fetch('http://localhost:5000/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -69,19 +71,19 @@ const LoginPage = () => {
         body: JSON.stringify({ username, password }),
       });
       if (response.ok) {
-        setNotification('Login successful');
-        // Perform further actions like redirecting to another page
+        message.success('Login successful');
+        window.location.assign('/loading');
       } else {
-        setNotification('Login failed. Please check your credentials.');
+        message.error('Login failed. Please check your credentials.');
       }
     } catch (error) {
       console.error('Error during login:', error);
-      setNotification('An error occurred during login. Please try again later.');
+      message.error('An error occurred during login. Please try again later.');
     }
   };
 
   const handleRegister = () => {
-    console.log('Redirect to Register Page');
+   window.location.assign('/register');
   };
 
   return (
@@ -102,7 +104,7 @@ const LoginPage = () => {
         />
         <Button type="submit">Login</Button>
         <RegisterButton type="button" onClick={handleRegister}>Register</RegisterButton>
-        {notification && <Notification>{notification}</Notification>}
+        <Notification>{notification}</Notification>
       </LoginForm>
     </Container>
   );
